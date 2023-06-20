@@ -39,7 +39,6 @@ public class Grid : MonoBehaviour
                     wall = false;
                 }
 
-                Debug.Log(x + " " + y);
                 grid[x, y] = new Node(wall, worldPoint, x, y);
             }
         }
@@ -68,46 +67,26 @@ public class Grid : MonoBehaviour
         //Kanan
         xCheck = node.gridX + 1;
         yCheck = node.gridY;
-        if (xCheck >= 0 && xCheck < gridSizeX)
-        {
-            if (yCheck >= 0 && yCheck < gridSizeY)
-            {
-                NeighbourList.Add(grid[xCheck, yCheck]);
-            }
-        }
+        if (xCheck >= 0 && xCheck < gridSizeX && yCheck < gridSizeY)
+            NeighbourList.Add(grid[xCheck, yCheck]);
         
-        // Kiri
+        //Kiri
         xCheck = node.gridX - 1;
         yCheck = node.gridY;
-        if (xCheck >= 0 && xCheck < gridSizeX)
-        {
-            if (yCheck >= 0 && yCheck < gridSizeY)
-            {
-                NeighbourList.Add(grid[xCheck, yCheck]);
-            }
-        }
+        if (xCheck >= 0 && xCheck < gridSizeX && yCheck < gridSizeY)
+            NeighbourList.Add(grid[xCheck, yCheck]);
 
-        // Atas
+        //Atas
         xCheck = node.gridX;
         yCheck = node.gridY + 1;
-        if (xCheck >= 0 && xCheck < gridSizeX)
-        {
-            if (yCheck >= 0 && yCheck < gridSizeY)
-            {
-                NeighbourList.Add(grid[xCheck, yCheck]);
-            }
-        }
+        if (xCheck >= 0 && xCheck < gridSizeX && yCheck < gridSizeY)
+            NeighbourList.Add(grid[xCheck, yCheck]);
         
-        // Bawah
+        //Bawah
         xCheck = node.gridX;
         yCheck = node.gridY - 1;
-        if (xCheck >= 0 && xCheck < gridSizeX)
-        {
-            if (yCheck >= 0 && yCheck < gridSizeY)
-            {
-                NeighbourList.Add(grid[xCheck, yCheck]);
-            }
-        }
+        if (xCheck >= 0 && xCheck < gridSizeX && yCheck < gridSizeY)
+            NeighbourList.Add(grid[xCheck, yCheck]);
 
         return NeighbourList;
     }
@@ -117,17 +96,21 @@ public class Grid : MonoBehaviour
         Gizmos.color = Color.black;
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, gridWorldSize.y));
 
-        if (grid != null) {
+        if (grid != null && finalPath == null) {
             foreach (Node node in grid) {
                 if (node.isWall) {
                     Gizmos.color = Color.black;
-                } else {
+                }
+                else {
                     Gizmos.color = Color.yellow;
                 }
 
-                if (finalPath != null) {
-                    Gizmos.color = Color.red;
-                }
+                Gizmos.DrawCube(node.position, Vector3.one * (nodeDiameter - distance));
+            }
+        }
+        else if (finalPath != null) {
+            foreach (Node node in finalPath) {
+                Gizmos.color = Color.red;
 
                 Gizmos.DrawCube(node.position, Vector3.one * (nodeDiameter - distance));
             }
