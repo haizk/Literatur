@@ -60,6 +60,9 @@
     <Compile Include="Assets\Scripts\Node.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Grid.cs" />
+    <Compile Include="Assets\Scripts\Pathfinding1.cs" />
+    <Compile Include="Assets\Scripts\Pathfinding2.cs" />
+    <Compile Include="Assets\Scripts\PositionRandomizer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

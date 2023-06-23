@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pathfinding : MonoBehaviour {
+public class Pathfinding1 : MonoBehaviour {
 
     Grid GridReference;//For referencing the grid class
     public Transform StartPosition;//Starting position to pathfind from
     public Transform TargetPosition;//Starting position to pathfind to
-    public float speed = 0f;//Walk speed
+    public float speed = 0f;
+    public float boostSpeed = 0f;
+    private bool isBoosted = false;
     private float period = 0f;//Starting interval to find a new path
+    private float boostPeriod = 0f;
 
     private void Awake()//When the program starts
     {
@@ -17,13 +20,21 @@ public class Pathfinding : MonoBehaviour {
 
     private void Update()//Every frame
     {
-        if (period > 0.01f) {//If 0.01 second been passed, find a new path
+        if (period > 0.01f) {//If 1 second passed, find a new path
             FindPath(StartPosition.position, TargetPosition.position);//Find a path to the goal
             period = 0f;//Reset period
         }
+        if (boostPeriod > 4.5f) {
+            isBoosted = true;
+            if (boostPeriod > 6f) {
+                isBoosted = false;
+                boostPeriod = 0f;
+            }
+        }
         period += Time.deltaTime;//Increments everytime
-        if (GridReference.FinalPath != null && GridReference.FinalPath.Count > 0) {//If final path is found
-            StartPosition.position = Vector3.MoveTowards(StartPosition.position, GridReference.FinalPath[0].vPosition, speed * Time.deltaTime);//Move towards nearest node
+        boostPeriod += Time.deltaTime;
+        if (GridReference.FinalPath != null && GridReference.FinalPath.Count > 0) {
+            StartPosition.position = Vector3.MoveTowards(StartPosition.position, GridReference.FinalPath[0].vPosition, (isBoosted ? boostSpeed : speed) * Time.deltaTime);
         }
     }
 
@@ -76,6 +87,7 @@ public class Pathfinding : MonoBehaviour {
                     }
                 }
             }
+
         }
     }
 
