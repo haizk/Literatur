@@ -29,4 +29,17 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy") {
+            Debug.Log("Enemy");
+            Time.timeScale = 0;
+        }
+
+        if (collision.gameObject.tag == "Goal") {
+            Debug.Log("Goal");
+            Time.timeScale = 0;
+        }
+    }
 }

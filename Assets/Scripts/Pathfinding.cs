@@ -50,7 +50,6 @@ public class Pathfinding : MonoBehaviour {
             OpenList.Remove(CurrentNode);//Remove that from the open list
             ClosedList.Add(CurrentNode);//And add it to the closed list
 
-            Debug.Log(TargetNode.iGridX + " " + TargetNode.iGridY);
             if (CurrentNode == TargetNode)//If the current node is the same as the target node
             {
                 GetFinalPath(StartNode, TargetNode);//Calculate the final path
