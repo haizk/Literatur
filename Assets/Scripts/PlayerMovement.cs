@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     public Transform movePoint;
     public LayerMask noMove;
     public Animator animator;
+    public GameObject UIWin;
+    public GameObject UILose;
 
     private void Start()
     {
@@ -40,12 +42,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy") {
             Debug.Log("Enemy");
-            //Time.timeScale = 0;
+            Time.timeScale = 0;
+            UILose.SetActive(true);
         }
 
         if (collision.gameObject.tag == "Goal") {
             Debug.Log("Goal");
-            //Time.timeScale = 0;
+            Time.timeScale = 0;
+            UIWin.SetActive(true);
         }
     }
 }
