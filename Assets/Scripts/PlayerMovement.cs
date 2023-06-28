@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     public Transform movePoint;
     public LayerMask noMove;
+    public Animator animator;
 
     private void Start()
     {
@@ -28,18 +29,23 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+
+        animator.SetFloat("Horizontal", Input.GetAxisRaw("Horizontal"));
+        animator.SetFloat("Vertical", Input.GetAxisRaw("Vertical"));
+        animator.SetFloat("Speed", movePoint.position.sqrMagnitude);
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy") {
             Debug.Log("Enemy");
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
         }
 
         if (collision.gameObject.tag == "Goal") {
             Debug.Log("Goal");
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
         }
     }
 }

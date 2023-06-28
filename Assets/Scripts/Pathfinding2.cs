@@ -7,6 +7,7 @@ public class Pathfinding2 : MonoBehaviour {
     Grid GridReference;//For referencing the grid class
     public Transform StartPosition;//Starting position to pathfind from
     public Transform RandomPosition;//Random position to pathfind to
+    public Animator animator;
     public float speed = 0f;
     private float period = 0f;//Starting interval to find a new path
 
@@ -30,6 +31,9 @@ public class Pathfinding2 : MonoBehaviour {
         period += Time.deltaTime;//Increments everytime
         if (GridReference.FinalPath != null && GridReference.FinalPath.Count > 0) {
             StartPosition.position = Vector3.MoveTowards(StartPosition.position, GridReference.FinalPath[0].vPosition, speed * Time.deltaTime);
+            animator.SetFloat("Horizontal", GridReference.FinalPath[0].vPosition.x - StartPosition.position.x);
+            animator.SetFloat("Vertical", GridReference.FinalPath[0].vPosition.y - StartPosition.position.y);
+            animator.SetFloat("Speed", StartPosition.position.sqrMagnitude);
         }
     }
 

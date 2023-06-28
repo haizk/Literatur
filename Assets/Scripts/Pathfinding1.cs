@@ -7,6 +7,7 @@ public class Pathfinding1 : MonoBehaviour {
     Grid GridReference;//For referencing the grid class
     public Transform StartPosition;//Starting position to pathfind from
     public Transform TargetPosition;//Starting position to pathfind to
+    public Animator animator;
     public float speed = 0f;
     public float boostSpeed = 0f;
     private bool isBoosted = false;
@@ -35,7 +36,18 @@ public class Pathfinding1 : MonoBehaviour {
         boostPeriod += Time.deltaTime;
         if (GridReference.FinalPath != null && GridReference.FinalPath.Count > 0) {
             StartPosition.position = Vector3.MoveTowards(StartPosition.position, GridReference.FinalPath[0].vPosition, (isBoosted ? boostSpeed : speed) * Time.deltaTime);
+            if (!isBoosted) {
+                animator.SetFloat("Horizontal", 0);
+                animator.SetFloat("Vertical", 0);
+                animator.SetFloat("Speed", StartPosition.position.sqrMagnitude);
+            }
+            else {
+                animator.SetFloat("Horizontal", GridReference.FinalPath[0].vPosition.x - StartPosition.position.x);
+                animator.SetFloat("Vertical", GridReference.FinalPath[0].vPosition.y - StartPosition.position.y);
+                animator.SetFloat("Speed", StartPosition.position.sqrMagnitude);
+            }
         }
+
     }
 
     void FindPath(Vector3 a_StartPos, Vector3 a_TargetPos)

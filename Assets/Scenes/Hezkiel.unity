@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 89041785}
   - component: {fileID: 89041786}
   - component: {fileID: 89041787}
+  - component: {fileID: 89041788}
   m_Layer: 0
   m_Name: Enemy Sprite
   m_TagString: Enemy
@@ -259,6 +260,27 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.55, y: 1}
   m_Direction: 0
+--- !u!95 &89041788
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89041784}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2c1731334865084419bb16024bfa94c7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &200401472
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,6 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartPosition: {fileID: 480984247}
   TargetPosition: {fileID: 1873597320}
+  animator: {fileID: 1461999561}
   speed: 2.5
 --- !u!114 &273446650
 MonoBehaviour:
@@ -736,6 +759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartPosition: {fileID: 1133286090}
   RandomPosition: {fileID: 1290427296}
+  animator: {fileID: 89041788}
   speed: 5
 --- !u!1 &1133286089
 GameObject:
@@ -4668,6 +4692,7 @@ GameObject:
   - component: {fileID: 1461999558}
   - component: {fileID: 1461999559}
   - component: {fileID: 1461999560}
+  - component: {fileID: 1461999561}
   m_Layer: 0
   m_Name: Enemy Sprite
   m_TagString: Enemy
@@ -4758,6 +4783,27 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.55, y: 1}
   m_Direction: 0
+--- !u!95 &1461999561
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461999557}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 83e56b5e5dc7de845885d0058099eae0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1484213500
 GameObject:
   m_ObjectHideFlags: 0
@@ -4953,6 +4999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartPosition: {fileID: 746980492}
   RandomPosition: {fileID: 946518828}
+  animator: {fileID: 1916490704}
   speed: 3
 --- !u!1 &1820714398
 GameObject:
@@ -5051,7 +5098,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartPosition: {fileID: 1325021606}
   TargetPosition: {fileID: 1873597320}
-  speed: 0.5
+  animator: {fileID: 1218138041}
+  speed: 0
   boostSpeed: 6.5
 --- !u!1 &1873597318
 GameObject:
@@ -5091,6 +5139,7 @@ MonoBehaviour:
   noMove:
     serializedVersion: 2
     m_Bits: 64
+  animator: {fileID: 1873597323}
 --- !u!4 &1873597320
 Transform:
   m_ObjectHideFlags: 0
@@ -5228,6 +5277,7 @@ GameObject:
   - component: {fileID: 1916490701}
   - component: {fileID: 1916490702}
   - component: {fileID: 1916490703}
+  - component: {fileID: 1916490704}
   m_Layer: 0
   m_Name: Goal Sprite
   m_TagString: Goal
@@ -5318,3 +5368,24 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.88, y: 1}
   m_Direction: 0
+--- !u!95 &1916490704
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916490700}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0328e627aacc74341b297366f3056ecf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
